@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<title>
+    Registro
+</title>
+
+<body class="registros">
+    <div class="registros">
+        <h1 class="titulos">
+            Registrarse
+        </h1>
+        <p>
+            Nombre: <br>
+            <input type="text" id="nombre"> <br>
+        </p>
+        <p>
+            Apellido: <br>
+            <input type="text" id="apellido"> <br>
+        </p>
+        <p>
+            <label for="tipoMonedas">Tipo moneda:</label> <br>
+            <select name="monedas" id="tipoMonedas" style="width: 175px">
+                <option value="pesoArg">Peso argentino</option>
+                <option value="dolar">Dólar estadounidense</option>
+                <option value="euro">Euro</option>
+                <option value="real">Real</option>
+                <option value="yen">Yen</option>
+            </select>
+        </p>
+        <p>
+            DNI: <br>
+            <input type="number" id="dni"> <br>
+        </p>
+        <p>
+            Telefono: <br>
+            <input type="number" id="telefono"> <br>
+        </p>
+        <p>
+            Email: <br>
+            <input type="text" id="email"> <br>
+        </p>
+        <p>
+            Contraseña: <br>
+            <input type="password" id="contrasenia"> <br>
+        </p>
+        <p>
+            Metodos de pago: <br>
+            <label for="tarjeta"> Tarjeta </label>
+            <input type="checkbox" id="tarjeta" name="tarjeta" value="Tarjeta" onchange="alternarTarjetas()">
+
+        <div style="display:none" id="tiposTarjeta">
+            <label for="credito"> Credito </label>
+            <input type="radio" id="credito" name="tarjetas" value="Credito"> <br>
+            <label for="debito"> Debito </label>
+            <input type="radio" id="debito" name="tarjetas" value="Debito"> <br>
+            <label for="prepaga"> Prepaga </label>
+            <input type="radio" id="prepaga" name="tarjetas" value="Prepaga"> <br> <br>
+
+            <p>
+                Ingrese datos de tarjeta: <br>
+                <input type="text" id="nroTarjeta"> <br>
+            </p>
+            <p>
+                Nombre titular de la tarjeta: <br>
+                <input type="text" id="nom_duenio"> <br>
+            </p>
+            <p>
+                Fecha vencimiento: <br>
+                <input type="month" id="fecha"> <br> <br>
+            </p>
+        </div>
+
+        <p>
+            <label for="efectivo"> Efectivo </label>
+            <input type="checkbox" id="efectivo" name="efectivo" value="Efectivo"> <br>
+        </p>
+        <p>
+            <label for="transferencia"> Transferencia </label>
+            <input type="checkbox" id="transferencia" name="transferencia" value="Transferencia"> <br>
+        </p>
+        <p>
+            <label for="mercadoPago"> Mercado Pago </label>
+            <input type="checkbox" id="mercadoPago" name="mercadoPago" value="Mercado Pago"> <br>
+        </p>
+        </p>
+        <p>
+            <label><input type="checkbox" id="termsAndConditions" onchange="actualizarEstadoLogin()"> Acepto los
+                terminos y condiciones. </label><br>
+        </p>
+        <p>
+            <input type="button" id="confirmar" value="Registrar cuenta" disabled onclick="checkearDatos()">
+        </p>
+        <p>
+            ¿Ya tenés una cuenta? <a href="login.html" target="" title="Pagina para entrar a tu cuenta"> Entrá a tu
+                cuenta desde acá </a>
+        </p>
+        <p>
+            <a href="index.html" target="" title="Volver al inicio"> Volver al Inicio </a>
+            <input type="button" onclick="guardarUsuario()" value="Guardar user">
+        </p>
+    </div>
+</body>
+
+<script>
+    var usuario = {
+        nombre: "",
+        apellido: "",
+        dni: "",
+        moneda: "",
+        correo: "",
+        contrasenia: ""
+    }
+
+    function getE(id) {
+        return document.getElementById(id);
+    }
+
+    function actualizarEstadoLogin() {
+        getE('confirmar').disabled = !getE('confirmar').disabled;
+    }
+
+    function alternarTarjetas() {
+        if (window.getComputedStyle(getE('tiposTarjeta')).display === "none") {
+            getE('tiposTarjeta').style.display = "inline";
+        }
+        else {
+            getE('tiposTarjeta').style.display = "none";
+        }
+    }
+
+    function guardarUsuario() {
+        usuario.nombre = getE('nombre').value;
+        usuario.apellido = getE('apellido').value;
+        usuario.dni = getE('dni').value;
+        usuario.email = getE('email').value;
+        usuario.contrasenia = getE('contrasenia').value;
+        texto = JSON.stringify(usuario);
+        console.log(texto);
+    }
+
+    function checkearDatos() {
+        if (getE('nombre').value != 0 && getE('apellido').value != 0 && getE('dni').value != 0
+            && getE('email').value != 0 && getE('contrasenia').value != 0) {
+            window.location.href = 'galeriaHoteles.html';
+        } else {
+            window.alert('Algunos datos están vacios');
+        }
+    }
+</script>
+
+</html>

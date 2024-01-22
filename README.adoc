@@ -1,0 +1,4 @@
+= Trabajo practico Especificación de Software
+
+En este repositorio se guarda los archivos fuente e imagenes que se utiliza 
+para la entrega de prueba de concepto del trabajo practico de la materia.

@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> Hoteles Ya </title>
+
+	<!-- Javascript -->
+		<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+		<script src="javaScripts/filtros.js"></script>
+	<!-- CSS -->
+		<link rel="stylesheet" href="styles/galeriaHoteles.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="styles/carrito.css">
+
+</head>
+
+<body>
+	<header class="cd-header">
+		<h1>Habitaciones</h1>
+	</header>
+
+	<main class="cd-main-content">						<!--barra de objetos superior-->
+		<div class="cd-tab-filter-wrapper">				<!--permite que la barra te siga al scrollear-->
+			<div class="cd-tab-filter">
+				<ul class="cd-filters">
+					<li class="placeholder"> 			<!--sin esta linea los botones terminar en cualquier lado-->
+					</li> 
+
+					<li class="filter"><a class="selected" href="#0" data-type="all">All</a></li>
+					<li><a class="unselected" href="login.html" >Login</a></li>		
+					<li><a class="unselected" href="index.html" >Inicio</a></li>		
+					<button id="ChangeToGrid"><span class="active">&boxplus;</span></button>
+					<button id="ChangeToList"><span class="inactive">&boxminus;</span></button>
+					
+					<button onclick="window.location.href='index.html'"> Cerrar sesión </button>
+
+					<button onclick="toggleCart()">Mostrar/Esconder Carrito</button>				<!--abre/cierra el carrito, por alguna razon el primer click no lo toma-->
+
+					<div id="cart" class="cart-container">						<!--contiene al carrito-->
+					  <h2>Carrito de compras</h2>
+					  <div id="cart-items"></div>
+					  <button onclick="checkout()" class="finalizar-compra">Finalizar compra</button>
+					</div>
+				</ul> <!-- barra superior -->
+			</div> <!-- cd-tab-filter -->
+		</div> <!-- cd-tab-filter-wrapper -->
+
+
+		<section class="cd-gallery">
+			<ul>
+				<div id="mixContainer" class="mixItems">		  			<!--esto mantiene los productos acomodados ademas de que la logica de los filtros sucede en el-->
+					<div id="product-list"></div>			  				<!--dentro de el se crean los productos-->
+				</div>
+				<li class="gap"></li>
+				<li class="gap"></li>
+			</ul>
+			<div class="cd-fail-message">Resultado no encontrado</div>
+		</section> <!-- cd-gallery -->
+
+		<div class="cd-filter">
+			<form>
+				<div class="cd-filter-block">								<!--bloque del filtro "buscar"-->
+					<h4>Buscar</h4>
+					
+					<div class="cd-filter-content">
+						<input type="search" placeholder="Intenta color-1...">
+					</div> <!-- contenido de los filtros "buscar" -->
+				</div> <!-- bloque de filtros "buscar" -->
+
+				<div class="cd-filter-block">								<!--bloque del filtro "check boxes"-->
+					<h4>Check boxes</h4>
+
+					<ul class="cd-filter-content cd-filters list">
+						<li>
+							<input class="filter" data-filter=".check1" type="checkbox" id="checkbox1">
+							<label class="checkbox-label" for="checkbox1">Opcion 1</label>
+						</li>
+
+						<li>
+							<input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
+							<label class="checkbox-label" for="checkbox2">Opcion 2</label>
+						</li>
+
+						<li>
+							<input class="filter" data-filter=".check3" type="checkbox" id="checkbox3">
+							<label class="checkbox-label" for="checkbox3">Opcion 3</label>
+						</li>
+					</ul> <!-- contenido de los filtros "check boxes"  -->
+				</div> <!-- bloque de filtros "check boxes"-->
+
+				<div class="cd-filter-block">							<!--bloque del filtro "seleccionar"-->
+					<h4>Seleccionar</h4>
+					
+					<div class="cd-filter-content">
+						<div class="cd-select cd-filters">
+							<select class="filter" name="selectThis" id="selectThis">
+								<option value="">Elige una opcion</option>
+								<option value=".option1">Opcion 1</option>
+								<option value=".option2">Opcion 2</option>
+								<option value=".option3">Opcion 3</option>
+								<option value=".option4">Opcion 4</option>
+							</select>
+						</div> <!-- cd-select -->
+					</div> <!-- contenido del desplegable "Seleccionar"-->
+				</div> <!-- bloque del desplegable "Seleccionar" -->
+
+				<div class="cd-filter-block">
+					<h4>Radio buttons</h4>
+
+					<ul class="cd-filter-content cd-filters list">
+						<li>
+							<input class="filter" data-filter="" type="radio" name="radioButton" id="radio1" checked>
+							<label class="radio-label" for="radio1">All</label>
+						</li>
+
+						<li>
+							<input class="filter" data-filter=".radio2" type="radio" name="radioButton" id="radio2">
+							<label class="radio-label" for="radio2">Choice 2</label>
+						</li>
+
+						<li>
+							<input class="filter" data-filter=".radio3" type="radio" name="radioButton" id="radio3">
+							<label class="radio-label" for="radio3">Choice 3</label>
+						</li>
+					</ul> <!-- cd-filter-content -->
+				</div> <!-- cd-filter-block -->
+			</form>
+
+			<a href="#0" class="cd-close">Cerrar</a>
+		</div> <!-- Fin de la sección de filtros -->
+
+		<a href="#0" class="cd-filter-trigger">Filtros</a>
+	</main> <!-- Fin del main -->
+	<script src="javaScripts/productos.js"></script>				<!--si se modifica o se mueve este script todo deja de funcionar-->
+	<script src="javaScripts/carrito.js"></script>					<!--si se modifica o se mueve este script todo deja de funcionar-->
+</body>
+</html>

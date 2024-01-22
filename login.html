@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<title>
+    Login
+</title>
+
+<body>
+    <div class="registros">
+        <h1 class="titulos">
+            Entrar a mi cuenta
+        </h1>
+        <p>
+            Email: <br>
+            <input type="text" id="email"> <br>
+        </p>
+        <p>
+            Contraseña: <br>
+            <input type="password" id="contraseña"> <br>
+        </p>
+        <p>
+            <input type="button" value="Iniciar sesión"
+                onclick="login()"> <br>
+        </p>
+        <p>
+            <a href="recuperacion.html" target="_blank" title="Recuperar de cuentas"> ¿Olvidaste tu contraseña?</a>
+        </p>
+        <p>
+            ¿No tenés una cuenta? <a href="registro.html" title="Pagina de registro de cuenta"> Registrate acá</a>.
+        </p>
+        <p>
+            <a href="index.html" target="" title="Volver al inicio"> Volver al Inicio </a>
+        </p>
+    </div>
+</body>
+
+<script>
+
+    var cuentas = [];
+
+    function getE(id){
+        return document.getElementById(id);
+    }
+
+    function login() {
+        cuenta1 = JSON.parse('{"email":"ejemplo1234@gmail.com", "pass":"ejemplo1234"}');
+        cuentas[0] = cuenta1;
+        cuenta2 = JSON.parse('{"email":"ejemplo2412@gmail.com", "pass":"contraseña"}');
+        cuentas[1] = cuenta2;
+        cuenta3 = JSON.parse('{"email":"soyunejemplo@gmail.com", "pass":"contraseña2"}');
+        cuentas[2] = cuenta3;
+        cuenta4 = JSON.parse('{"email":"martinalvear04@gmail.com", "pass":"asterion"}');
+        cuentas[3] = cuenta4;
+        cuenta5 = JSON.parse('{"email":"german.cuarta01@gmail.com", "pass":"Maiameee"}');
+        cuentas[4] = cuenta5;
+
+        var mailIngresado = getE('email').value;
+        var passIngresado = getE('contraseña').value;
+
+        var correoExiste = false;
+        var seEncontro = false;
+
+        for (var i=0;i<cuentas.length; i++){
+            correoExiste = correoExiste || (mailIngresado == cuentas[i].email);
+            if (mailIngresado == cuentas[i].email && passIngresado == cuentas[i].pass){
+                seEncontro = true;
+                //window.alert("Se logueo correctamente");
+                window.location.href = 'galeriaHoteles.html';
+            }
+        }
+        if (!seEncontro){
+            if (correoExiste) window.alert("La contraseña es incorrecta");
+            else window.alert("El correo no existe");
+        }
+    }
+</script>
+
+</html>
