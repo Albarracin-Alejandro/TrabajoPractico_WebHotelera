@@ -1,4 +1,3 @@
 = Trabajo practico Especificación de Software
 
-En este repositorio se guarda los archivos fuente e imagenes que se utiliza 
-para la entrega de prueba de concepto del trabajo practico de la materia.
+En este repositorio se guarda los archivos fuente e imagenes que se utiliza para la entrega de prueba de concepto del trabajo practico de la materia de especificacion y verificacion de software. En este hubo que ademas realizar user stories, diagramas de clase, de secuencia y de actividad, por ultimo testing funcional.
